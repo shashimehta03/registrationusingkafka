@@ -1,8 +1,8 @@
 const { Kafka } = require('kafkajs');
 
 module.exports = async function () {
-  const kafka = new Kafka({ clientId: 'auth-consumer', brokers: ['localhost:9092'] });
-  const consumer = kafka.consumer({ groupId: 'auth-group' });
+  const kafka = new Kafka({ clientId: 'auth-consumer', brokers: ['localhost:9092'] }); // client setup
+  const consumer = kafka.consumer({ groupId: 'auth-group' }); 
 
   await consumer.connect();
   await consumer.subscribe({ topic: 'user-registered', fromBeginning: true });

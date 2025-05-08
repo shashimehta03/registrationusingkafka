@@ -31,7 +31,7 @@ exports.login = async (req, res) => {
 //   const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
   const token = jwt.sign({ id: user._id }, "c635246a3d027f63167af855f9581211657c5a9f4b386f757436cf2de102ea59", { expiresIn: '1h' });
 
-
+  //sending message to the kafka client
   await producer.send({
     topic: 'user-logged-in',
     messages: [{ value: JSON.stringify({ email, timestamp: Date.now() }) }],
